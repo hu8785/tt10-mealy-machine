@@ -1,29 +1,21 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title: "Mealy Machine State Detector"
+  author: "Akanksha hu8785"
+  discord: ""
+  description: "Mealy machine that detects sequence 1010"
+  language: "Verilog"
+  clock_hz: 50000000
 
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "1x1"
 
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module: "tt_um_Akanksha_hu8785_mealy"
 
-  # List your project's source files here.
-  # Source files must be in ./src and you must list each source file separately, one per line.
-  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "project.v"
+    - "tt_um_Akanksha_hu8785_mealy.v"
 
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
-# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
-  # Inputs
-  ui[0]: ""
+  ui[0]: "in"
   ui[1]: ""
   ui[2]: ""
   ui[3]: ""
@@ -32,8 +24,7 @@ pinout:
   ui[6]: ""
   ui[7]: ""
 
-  # Outputs
-  uo[0]: ""
+  uo[0]: "out"
   uo[1]: ""
   uo[2]: ""
   uo[3]: ""
@@ -42,7 +33,6 @@ pinout:
   uo[6]: ""
   uo[7]: ""
 
-  # Bidirectional pins
   uio[0]: ""
   uio[1]: ""
   uio[2]: ""
@@ -52,5 +42,26 @@ pinout:
   uio[6]: ""
   uio[7]: ""
 
-# Do not change!
-yaml_version: 6
+documentation:
+  author: "Akanksha hu8785"
+  title: "Mealy Machine State Detector"
+  language: "Verilog"
+  description: "A Mealy machine that detects the sequence 1010. Output goes high when sequence is detected."
+
+  how_it_works: |
+    This is a Mealy machine implementation with 5 states (a, b, c, d, e):
+    - State a: Initial state
+    - State b: After detecting first '1'
+    - State c: After detecting '10'
+    - State d: After detecting '101'
+    - State e: After detecting '1010' (output = 1)
+    
+    The output depends on both current state and input.
+
+  how_to_test: |
+    1. Reset the design
+    2. Apply input sequence on ui[0]
+    3. Observe output on uo[0]
+    4. Output should go high when sequence 1010 is detected
+
+  external_hw: "No external hardware required. Just connect input and observe output."
