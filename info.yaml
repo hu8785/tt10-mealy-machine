@@ -1,3 +1,4 @@
+yaml_version: 6
 # Tiny Tapeout project information
 project:
   title: "Mealy Machine State Detector"
